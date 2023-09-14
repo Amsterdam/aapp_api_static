@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-    aapp-static:
-      container_name: aapp-static
-      image: static
+    app:
+      container_name: static
+      image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-aapp/images/static}:${VERSION:-latest}
       build:
           context: .
           dockerfile: Dockerfile
