@@ -1,0 +1,18 @@
+trigger: none
+
+variables:
+  System.Debug: true
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Amsterdam-App/templates
+      ref: refs/tags/1.4.3
+
+pool: containerBuilder
+
+jobs:
+  - template: pipelines/acr/charts.yaml@templates
+    parameters:
+      chartPath: /manifests/chart

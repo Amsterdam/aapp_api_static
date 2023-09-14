@@ -1,0 +1,68 @@
+trigger: none
+
+variables:
+  System.Debug: true
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Amsterdam-App/templates
+      ref: refs/tags/1.4.3
+
+
+parameters:
+  - name: registry
+    type: string
+    default: saks01weuacrpgpgo5qvmwo.azurecr.io
+
+  - name: repository
+    type: string
+    default: aapp/images
+
+  - name: name
+    type: string
+    default: contact  
+
+  - name: version
+    type: string
+    default: 1.0.0
+
+extends:
+  template: pipelines/aks/template.yaml@templates
+  parameters:
+    name: ${{ parameters.name }}
+    version: ${{ parameters.version }}
+
+    # build:
+    #   pool:
+    #     name: ContainerBuilder
+
+    #   # steps:
+    #   # - script: |
+    #   #     az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
+    #   #   displayName: Show ${{ parameters.name }} image versions in S-ACR
+
+    #   # postSteps:
+    #   # - script: echo "End build"
+    #   #   displayName: "Skip postSteps"
+
+    #   # Override default postSteps
+    #   # postSteps:
+    #   # - script: |
+    #   #     az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
+    #   #   displayName: Show ${{ parameters.name }} image versions in S-ACR
+
+    dev:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-ont-01-aapp-ontw
+      kubernetesServiceConnection: SCN-K8S-AAPP-ns-ccc-aapp-ont-01-aapp-ontw-ont
+
+
+      # steps: 
+      # - script: |
+      #     helm uninstall ${{ parameters.name }}
+      #   displayName: Helm uninstall ${{ parameters.name }}  
+
+      # - script:  make deploy
+      #   displayName: Deploy helmchart    
