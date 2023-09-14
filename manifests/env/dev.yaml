@@ -1,0 +1,24 @@
+tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
+keyVaultName: shared-o-njo5j7pxxiapu
+workloadIdentity: e8e648cd-def8-4b8a-b431-8c2460b86e67
+
+host: ontw.app.amsterdam.nl
+nodepool: cccaappont01
+
+# deployments:
+#   echo-server:
+#     autoscale:
+#       cpu: 70
+#       memory: 90
+#       min: 2
+#       max: 4
+
+# ingress:
+#   echo-server-internal:
+#     paths:
+#       - path: /echo-server
+#         pathType: Prefix
+#         service: echo-server
+#         port: 80
+#     tls:
+#       secretNameOverride: aapp
