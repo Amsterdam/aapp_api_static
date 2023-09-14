@@ -1,3 +1,7 @@
 FROM nginx:alpine
-COPY ./static /usr/share/nginx/html
-EXPOSE 8000
+
+WORKDIR /app
+
+COPY . .
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
