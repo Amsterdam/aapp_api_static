@@ -22,7 +22,7 @@ parameters:
 
   - name: name
     type: string
-    default: contact  
+    default: static  
 
   - name: version
     type: string
