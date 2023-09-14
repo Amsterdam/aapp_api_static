@@ -76,10 +76,10 @@ extends:
       #             fi     
 
       # Override default postSteps
-      # postSteps:
-      # - script: |
-      #     az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
-      #   displayName: Show ${{ parameters.name }} image versions in S-ACR
+      postSteps:
+      - script: |
+          az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
+        displayName: Show ${{ parameters.name }} image versions in S-ACR
 
     #dev:
       # pool: Amsterdam-App
