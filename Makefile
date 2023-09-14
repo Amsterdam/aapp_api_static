@@ -27,10 +27,10 @@ push:
 	$(dc) push
 
 manifests:
-	@helm template contact $(HELM_ARGS) $(ARGS)
+	@helm template static $(HELM_ARGS) $(ARGS)
 
 deploy: manifests
-	helm upgrade --install contact $(HELM_ARGS) $(ARGS)
+	helm upgrade --install static $(HELM_ARGS) $(ARGS)
 
 clean:
 	$(dc) down -v --remove-orphans	
