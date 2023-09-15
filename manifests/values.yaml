@@ -7,7 +7,7 @@ image:
   tag: 1.0.0
 
 labels:
-  app: static
+  app: aapp
 
 serviceAccount: default
 serviceAccounts:
@@ -16,7 +16,7 @@ serviceAccounts:
 
 network:
   allow-ingress:
-    selector: app == 'static'
+    selector: app == 'aapp'
     ingress:
       - action: Allow
     egress:
@@ -31,7 +31,7 @@ jobs:
     secrets:
       - certificate
     containers:
-      - name: static
+      - name: main
         command:
           - sleep
         args:
@@ -82,9 +82,9 @@ jobs:
 #           - import_api
 
 deployments:
-  app:
+  api:
     selectorLabels:
-      component: static
+      component: api
     securityContext:
       runAsUser: 2000     
     resources:
@@ -99,7 +99,7 @@ deployments:
         spec:
           emptyDir: {}           
     containers:
-      - name: static
+      - name: main
         ports:
           - port: 8000
             name: http
@@ -114,9 +114,9 @@ secrets:
     tls: aapp-cert
       
 services:
-  static:
+  api:
     selector:
-      component: static
+      component: api
     ports:
       - port: 8000
         targetPort: 8000
@@ -128,6 +128,6 @@ ingress:
     paths:
       - path: /
         pathType: Prefix
-        service: static
+        service: api
         port: 8000
     tls: certificate       
