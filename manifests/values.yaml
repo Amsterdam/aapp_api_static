@@ -112,19 +112,12 @@ deployments:
         volumes:
           - name: tmp
             mountPath: /tmp
-        secrets:
-          - vault
+
 
 secrets:
   certificate:
     type: keyvault
     tls: aapp-cert
-  vault:
-    type: keyvault
-    workloadIdentity: e8e648cd-def8-4b8a-b431-8c2460b86e67
-    keyVaultName: aapp-o-bgr6li3kaefcc    
-    secrets:
-      - aes-secret
       
 services:
   static:
