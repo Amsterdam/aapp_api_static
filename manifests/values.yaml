@@ -22,12 +22,6 @@ network:
     egress:
       - action: Allow
 
-# persistentVolumeClaims:
-#   data:
-#     resources:
-#       requests:
-#         storage: 1Gi
-
 jobs:
   certificate-init:
     annotations:
