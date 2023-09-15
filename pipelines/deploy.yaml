@@ -59,10 +59,10 @@ extends:
       kubernetesServiceConnection: SCN-K8S-AAPP-ns-ccc-aapp-ont-01-aapp-ontw-ont
 
 
-      # steps: 
-      # - script: |
-      #     helm uninstall ${{ parameters.name }}
-      #   displayName: Helm uninstall ${{ parameters.name }}  
+      steps: 
+      - script: |
+          helm uninstall ${{ parameters.name }}
+        displayName: Helm uninstall ${{ parameters.name }}  
 
       # - script:  make deploy
       #   displayName: Deploy helmchart    
