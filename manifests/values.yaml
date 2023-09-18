@@ -86,7 +86,12 @@ deployments:
     selectorLabels:
       component: api
     securityContext:
-      runAsUser: 2000     
+      runAsUser: 2000
+    autoscale:
+      cpu: 70
+      memory: 90
+      min: 1
+      max: 3        
     resources:
       requests:
         cpu: 1
