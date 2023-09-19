@@ -94,11 +94,11 @@ deployments:
       max: 3        
     resources:
       requests:
-        cpu: 1
-        memory: "512Mi"
+        cpu: 100m
+        memory: "100Mi"
       limits:
-        cpu: 2
-        memory: "512Mi"
+        cpu: 100m
+        memory: "100Mi"
     volumes:
       - name: tmp
         spec:
@@ -110,7 +110,7 @@ deployments:
             name: http
         volumes:
           - name: tmp
-            mountPath: /tmp
+            mountPath: /var/cache
 
 
 secrets:
