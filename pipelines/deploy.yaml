@@ -56,7 +56,7 @@ extends:
     dev:
       pool: Amsterdam-App
       namespace: ns-ccc-aapp-ont-01-aapp-ontw
-      kubernetesServiceConnection: SCN-K8S-AAPP-ns-ccc-aapp-ont-01-aapp-ontw-ont
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-ont-01-aapp-ontw
 
 
       # steps: 
