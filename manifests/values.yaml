@@ -110,7 +110,7 @@ deployments:
             name: http
         volumes:
           - name: tmp
-            mountPath: /var/cache
+            mountPath: /var/cache/nginx
 
 
 secrets:
