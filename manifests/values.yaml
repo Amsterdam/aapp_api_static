@@ -7,7 +7,7 @@ image:
   tag: 1.0.0
 
 labels:
-  app: aapp
+  app: aapp-static
 
 serviceAccount: default
 serviceAccounts:
@@ -16,7 +16,7 @@ serviceAccounts:
 
 network:
   allow-ingress:
-    selector: app == 'aapp'
+    selector: app == 'aapp-static'
     ingress:
       - action: Allow
     egress:
