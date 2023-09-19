@@ -100,18 +100,27 @@ deployments:
         cpu: 100m
         memory: "100Mi"
     volumes:
-      - name: tmp
+      - name: cache
         spec:
-          emptyDir: {}           
+          emptyDir: {}
+      - name: run
+        spec:
+          emptyDir: {} 
+      - name: log
+        spec:
+          emptyDir: {}                               
     containers:
       - name: main
         ports:
           - port: 8000
             name: http
         volumes:
-          - name: tmp
+          - name: cache
             mountPath: /var/cache/nginx
-
+          - name: run
+            mountPath: /var/run
+          - name: log
+            mountPath: /var/log            
 
 secrets:
   certificate:
