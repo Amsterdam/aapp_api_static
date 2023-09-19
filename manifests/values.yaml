@@ -120,7 +120,7 @@ deployments:
           - name: run
             mountPath: /var/run
           - name: log
-            mountPath: /var/log            
+            mountPath: /var/log/nginx       
 
 secrets:
   certificate:
