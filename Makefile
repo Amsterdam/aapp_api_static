@@ -7,7 +7,7 @@ dc = docker-compose
 run = $(dc) run --rm -u ${UID}:${GID}
 
 ENVIRONMENT ?= local
-HELM_ARGS = manifests/chart \
+HELM_ARGS = oci://${REGISTRY}/aapp/charts/application --version 1.8.0  \
 	-f manifests/values.yaml \
 	-f manifests/env/${ENVIRONMENT}.yaml \
 	--set image.tag=${VERSION}
