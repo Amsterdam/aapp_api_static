@@ -13,8 +13,8 @@ resources:
   repositories:
     - repository: templates
       type: git
-      name: TAMM/templates
-      ref: refs/tags/1.4.5
+      name: Amsterdam-App/templates
+      ref: refs/tags/1.4.6
 
 parameters:
   - name: registry
