@@ -65,4 +65,9 @@ extends:
       #   displayName: Helm uninstall ${{ parameters.name }}  
 
       # - script:  make deploy
-      #   displayName: Deploy helmchart    
+      #   displayName: Deploy helmchart 
+
+    test:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-tst-01-aapp-test
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-tst-01-aapp-test       
