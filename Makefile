@@ -13,7 +13,7 @@ HELM_ARGS = oci://${REGISTRY}/aapp/charts/application --version 1.8.0  \
 	--set image.tag=${VERSION}
 
 REGISTRY ?= localhost:5000
-REPOSITORY ?= Amsterdam-App/Amsterdam-App-Azure-Static
+REPOSITORY ?= Amsterdam-App/aapp-static
 VERSION ?= latest
 
 build:
