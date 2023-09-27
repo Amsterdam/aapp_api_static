@@ -1,5 +1,7 @@
 tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
 keyVaultName: shared-o-njo5j7pxxiapu
+
+# az ad sp list --filter "startswith(displayName,'aapp-backend-o')" => appId
 workloadIdentity: e8e648cd-def8-4b8a-b431-8c2460b86e67
 
 host: ontw.app.amsterdam.nl
