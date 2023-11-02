@@ -14,7 +14,7 @@ resources:
     - repository: templates
       type: git
       name: Amsterdam-App/templates
-      ref: refs/tags/1.4.6
+      ref: refs/tags/1.5.6
 
 parameters:
   - name: registry
