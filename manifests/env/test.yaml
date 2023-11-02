@@ -1,8 +1,8 @@
 tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
 keyVaultName: shared-t-gdqxxofz6d2sw
 
-# az ad sp list --filter "startswith(displayName,'aapp-backend-t')" => appId
-workloadIdentity: 8c35e2c5-5749-486e-87ed-83d64767d43c
+# az ad sp list --filter "startswith(displayName,'aapp-static-t')" => appId
+workloadIdentity: e06857ea-374b-41a9-b536-f4483e7366aa
 
 host: test.app.amsterdam.nl
 nodepool: cccaapptst01
