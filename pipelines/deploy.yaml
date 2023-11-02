@@ -69,4 +69,15 @@ extends:
         steps: 
         - script: |
             helm uninstall ${{ parameters.name }}
-          displayName: Helm uninstall ${{ parameters.name }}                        
+          displayName: Helm uninstall ${{ parameters.name }} 
+
+    prod:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-prd-01-aapp-prod
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-prd-01-aapp-prd
+
+      ${{ if eq(parameters['uninstall'], 'true') }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}                                  
