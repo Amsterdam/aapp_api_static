@@ -1,0 +1,8 @@
+tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
+keyVaultName: shared-p-ycobncdiqz2n4
+
+# az ad sp list --filter "startswith(displayName,'aapp-backend-p')" => appId
+workloadIdentity: 246ca83e-838b-402b-87ce-eb3adde17639
+
+host: app.amsterdam.nl
+nodepool: cccaappprd01
