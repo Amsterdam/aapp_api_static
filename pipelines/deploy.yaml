@@ -28,6 +28,10 @@ parameters:
     type: string
     default: 1.0.2
 
+  - name: uninstall
+    type: boolean
+    default: false
+
 extends:
   template: pipelines/aks/template.yaml@templates
   parameters:
@@ -58,11 +62,11 @@ extends:
       namespace: ns-ccc-aapp-ont-01-aapp-ontw
       kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-ont-01-aapp-ontw
 
-
-      # steps: 
-      # - script: |
-      #     helm uninstall ${{ parameters.name }}
-      #   displayName: Helm uninstall ${{ parameters.name }}  
+      ${{ if parameters.uninstall }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}  
 
       # - script:  make deploy
       #   displayName: Deploy helmchart 
