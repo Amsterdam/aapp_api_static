@@ -58,30 +58,25 @@ extends:
                     exit 1
                   fi
 
-      - task: Bash@3
-        displayName: Check if tag present
-        inputs:
-            targetType: 'inline'
-            script: |
-                  az login --identity
-                  az acr login --name ${{ parameters.registry }}
-                  az acr repository list --name ${{ parameters.registry }}
-                  TAG_EXISTS=$(az acr repository show --name ${{ parameters.registry }} --image ${{ parameters.repository }}/${{ parameters.name }}:$(Build.SourceBranchName))
+      # - task: Bash@3
+      #   displayName: Check if tag present
+      #   inputs:
+      #       targetType: 'inline'
+      #       script: |
+      #             az login --identity
+      #             az acr login --name ${{ parameters.registry }}
+      #             az acr repository list --name ${{ parameters.registry }}
+      #             TAG_EXISTS=$(az acr repository show --name ${{ parameters.registry }} --image ${{ parameters.repository }}/${{ parameters.name }}:$(Build.SourceBranchName))
                 
-                  if [ -n "${TAG_EXISTS}" ]; then
-                    echo 'ERROR: tag $(Build.SourceBranchName) exists. Exiting.'
-                    exit 1
-                  else
-                    echo 'INFO: tag $(Build.SourceBranchName) does not exist. Proceeding.'  
-                  fi     
+      #             if [ -n "${TAG_EXISTS}" ]; then
+      #               echo 'ERROR: tag $(Build.SourceBranchName) exists. Exiting.'
+      #               exit 1
+      #             else
+      #               echo 'INFO: tag $(Build.SourceBranchName) does not exist. Proceeding.'  
+      #             fi     
 
       # Override default postSteps
       postSteps:
       - script: |
           az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
         displayName: Show ${{ parameters.name }} image versions in S-ACR
-
-    #dev:
-      # pool: Amsterdam-App
-      # namespace: ns-ccc-aapp-ont-01-aapp-ontw
-      # kubernetesServiceConnection: SCN-K8S-AAPP-ns-ccc-aapp-ont-01-aapp-ontw-ont   
