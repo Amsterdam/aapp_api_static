@@ -38,25 +38,6 @@ extends:
     name: ${{ parameters.name }}
     version: ${{ parameters.version }}
 
-    # build:
-    #   pool:
-    #     name: ContainerBuilder
-
-    #   # steps:
-    #   # - script: |
-    #   #     az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
-    #   #   displayName: Show ${{ parameters.name }} image versions in S-ACR
-
-    #   # postSteps:
-    #   # - script: echo "End build"
-    #   #   displayName: "Skip postSteps"
-
-    #   # Override default postSteps
-    #   # postSteps:
-    #   # - script: |
-    #   #     az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
-    #   #   displayName: Show ${{ parameters.name }} image versions in S-ACR
-
     dev:
       pool: Amsterdam-App
       namespace: ns-ccc-aapp-ont-01-aapp-ontw
@@ -74,4 +55,10 @@ extends:
     test:
       pool: Amsterdam-App
       namespace: ns-ccc-aapp-tst-01-aapp-test
-      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-tst-01-aapp-test       
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-tst-01-aapp-test
+
+      ${{ if eq(parameters['uninstall'], 'true') }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}              
