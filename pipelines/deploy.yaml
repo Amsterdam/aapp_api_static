@@ -49,9 +49,6 @@ extends:
             helm uninstall ${{ parameters.name }}
           displayName: Helm uninstall ${{ parameters.name }}  
 
-      # - script:  make deploy
-      #   displayName: Deploy helmchart 
-
     test:
       pool: Amsterdam-App
       namespace: ns-ccc-aapp-tst-01-aapp-test
@@ -61,4 +58,15 @@ extends:
         steps: 
         - script: |
             helm uninstall ${{ parameters.name }}
-          displayName: Helm uninstall ${{ parameters.name }}              
+          displayName: Helm uninstall ${{ parameters.name }}
+
+    acc:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-acc-01-aapp-acc
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-acc-01-aapp-acc
+
+      ${{ if eq(parameters['uninstall'], 'true') }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}                        
