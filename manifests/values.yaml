@@ -144,9 +144,9 @@ ingress:
         pathType: Prefix
         service: api
         port: 8000
-      - path: /static
-        pathType: Prefix
-        service: api
-        port: 8000         
+      # - path: /static
+      #   pathType: Prefix
+      #   service: api
+      #   port: 8000         
     tls: certificate
           
