@@ -1,8 +1,8 @@
 tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
 keyVaultName: shared-o-njo5j7pxxiapu
 
-# az ad sp list --filter "startswith(displayName,'aapp-backend-o')" => appId
-workloadIdentity: e8e648cd-def8-4b8a-b431-8c2460b86e67
+# az ad sp list --filter "startswith(displayName,'aapp-static-o')" => appId
+workloadIdentity: d49e4496-44eb-4468-99d0-8b156167a014
 
 host: ontw.app.amsterdam.nl
 nodepool: cccaappont01
