@@ -62,7 +62,7 @@ extends:
       namespace: ns-ccc-aapp-ont-01-aapp-ontw
       kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-ont-01-aapp-ontw
 
-      ${{ if parameters.uninstall }}:
+      ${{ if eq(parameters['uninstall'], 'true') }}:
         steps: 
         - script: |
             helm uninstall ${{ parameters.name }}
