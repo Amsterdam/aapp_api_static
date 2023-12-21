@@ -37,49 +37,6 @@ jobs:
         args:
           - '1'
 
-# jobs:
-#   migrate:
-#     annotations:
-#       helm.sh/hook: post-install,post-upgrade
-#     labels:
-#       component: migrate
-#     volumes:
-#       - name: tmp
-#         spec:
-#           emptyDir: {}
-#     containers:
-#       - name: main
-#         secrets:
-#           - vault
-#         volumes:
-#           - name: tmp
-#             mountPath: /tmp
-#         command:
-#           - python
-#           - manage.py
-#           - migrate
-
-# cronJobs:
-#   migrate:
-#     labels:
-#       component: import
-#     schedule: "0 * * * *"
-#     volumes:
-#       - name: tmp
-#         mountPath: /tmp
-#         spec:
-#           emptyDir: {}
-#     containers:
-#       - name: main
-#         volumes:
-#           - name: tmp
-#             mountPath: /tmp
-#         secrets:
-#           - vault
-#         command:
-#           - python
-#           - manage.py
-#           - import_api
 
 deployments:
   api:
