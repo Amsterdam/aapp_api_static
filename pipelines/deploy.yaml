@@ -32,7 +32,7 @@ parameters:
 
   - name: version
     type: string
-    default: 1.0.4
+    default: 1.0.7
 
   - name: force
     type: boolean
