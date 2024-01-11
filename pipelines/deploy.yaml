@@ -1,7 +1,13 @@
-trigger: none
-
-variables:
-  System.Debug: true
+trigger:
+  batch: true
+  branches:
+    include:
+    - main
+  paths:
+    exclude:
+    - '*'
+    include:
+    - manifests
 
 resources:
   repositories:
@@ -26,7 +32,7 @@ parameters:
 
   - name: version
     type: string
-    default: 1.0.3
+    default: 1.0.4
 
   - name: force
     type: boolean
