@@ -78,6 +78,9 @@ deployments:
             mountPath: /var/run
           - name: log
             mountPath: /var/log/nginx       
+        command:
+          - sh
+          - /app/check-outbound.sh
 
 secrets:
   certificate:
