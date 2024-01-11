@@ -6,8 +6,7 @@ trigger:
     exclude:
     - main
 
-variables:
-  System.Debug: true
+pr: none
 
 resources:
   repositories:
@@ -43,7 +42,7 @@ extends:
       # Trigger AquaSec scan
       producedImages:
       - ${{ parameters.repository }}/${{ parameters.name }} 
-      
+
       # Override default preSteps
       preSteps:
       - task: Bash@3
