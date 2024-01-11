@@ -8,7 +8,7 @@ resources:
     - repository: templates
       type: git
       name: Amsterdam-App/templates
-      ref: refs/tags/1.5.6
+      ref: refs/tags/1.7.0
 
 
 parameters:
@@ -28,7 +28,7 @@ parameters:
     type: string
     default: 1.0.3
 
-  - name: uninstall
+  - name: force
     type: boolean
     default: false
 
@@ -43,8 +43,8 @@ extends:
       namespace: ns-ccc-aapp-ont-01-aapp-ontw
       kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-ont-01-aapp-ontw
 
-      ${{ if eq(parameters['uninstall'], 'true') }}:
-        steps: 
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
         - script: |
             helm uninstall ${{ parameters.name }}
           displayName: Helm uninstall ${{ parameters.name }}  
@@ -54,8 +54,8 @@ extends:
       namespace: ns-ccc-aapp-tst-01-aapp-test
       kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-tst-01-aapp-test
 
-      ${{ if eq(parameters['uninstall'], 'true') }}:
-        steps: 
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
         - script: |
             helm uninstall ${{ parameters.name }}
           displayName: Helm uninstall ${{ parameters.name }}
@@ -65,8 +65,8 @@ extends:
       namespace: ns-ccc-aapp-acc-01-aapp-acc
       kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-acc-01-aapp-acc
 
-      ${{ if eq(parameters['uninstall'], 'true') }}:
-        steps: 
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
         - script: |
             helm uninstall ${{ parameters.name }}
           displayName: Helm uninstall ${{ parameters.name }} 
@@ -76,8 +76,8 @@ extends:
       namespace: ns-ccc-aapp-prd-01-aapp-prd
       kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-prd-01-aapp-prd
 
-      ${{ if eq(parameters['uninstall'], 'true') }}:
-        steps: 
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
         - script: |
             helm uninstall ${{ parameters.name }}
           displayName: Helm uninstall ${{ parameters.name }}                                  
