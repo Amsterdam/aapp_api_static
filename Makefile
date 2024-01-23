@@ -20,7 +20,6 @@ build:
 	$(dc) build
 
 test:
-	#$(run) test pytest --junitxml=junit-results.xml --cov=. --cov-report=xml /app/tests/$(APP) $(ARGS)
 	echo "No tests available"
 
 push:
