@@ -2,19 +2,17 @@ trigger:
   batch: true
   branches:
     include:
-    - main
-  paths:
-    exclude:
-    - '*'
+      - main
+  tags:
     include:
-    - manifests
+      - "*.*.*"
 
 resources:
   repositories:
     - repository: templates
       type: git
-      name: Amsterdam-App/templates
-      ref: refs/tags/1.7.0
+      name: TAMM/templates
+      ref: refs/tags/1.7.1
 
 
 parameters:
