@@ -6,4 +6,3 @@ It is also the endpoint where the S-AKS health check goes to so if this service 
 # Build and Test
 Build: make build
 Test: make test
-
