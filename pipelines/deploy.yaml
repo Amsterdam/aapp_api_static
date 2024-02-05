@@ -28,10 +28,6 @@ parameters:
     type: string
     default: static  
 
-  - name: version
-    type: string
-    default: 1.0.9
-
   - name: force
     type: boolean
     default: false
@@ -40,7 +36,6 @@ extends:
   template: pipelines/aks/template.yaml@templates
   parameters:
     name: ${{ parameters.name }}
-    version: ${{ parameters.version }}
 
     dev:
       pool: Amsterdam-App
