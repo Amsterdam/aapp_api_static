@@ -8,7 +8,7 @@ resources:
     - repository: templates
       type: git
       name: TAMM/templates
-      ref: refs/tags/1.7.1
+      ref: refs/tags/1.8.0
 
 parameters:
   - name: registry
