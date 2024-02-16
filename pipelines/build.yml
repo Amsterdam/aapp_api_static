@@ -32,11 +32,7 @@ extends:
 
     build:
       pool:
-        name: ContainerBuilder
-
-      # Trigger AquaSec scan
-      producedImages:
-      - ${{ parameters.repository }}/${{ parameters.name }}    
+        name: ContainerBuilder  
 
       # Override default postSteps
       postSteps:
