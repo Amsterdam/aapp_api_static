@@ -11,7 +11,7 @@ resources:
   repositories:
     - repository: templates
       type: git
-      name: TAMM/templates
+      name: Amsterdam-App/aapp_infra_common-azure-pipelines
       ref: refs/tags/1.8.0
 
 
