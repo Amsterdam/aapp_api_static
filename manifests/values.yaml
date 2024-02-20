@@ -30,6 +30,13 @@ jobs:
       helm.sh/hook: post-install,post-upgrade
     labels:
       component: certificate
+    resources:
+      requests:
+        cpu: 100m
+        memory: "100Mi"
+      limits:
+        cpu: 100m
+        memory: "100Mi"      
     secrets:
       - certificate
     containers:
