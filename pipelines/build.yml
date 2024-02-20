@@ -28,14 +28,7 @@ extends:
   template: pipelines/aks/template.yaml@templates
   parameters:
     name: ${{ parameters.name }}
-    version: $(Build.SourceBranchName)
 
     build:
       pool:
-        name: ContainerBuilder  
-
-      # Override default postSteps
-      postSteps:
-      - script: |
-          az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
-        displayName: Show ${{ parameters.name }} image versions in S-ACR
+        name: ContainerBuilder
