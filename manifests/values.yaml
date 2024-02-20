@@ -61,10 +61,10 @@ deployments:
     resources:
       requests:
         cpu: 100m
-        memory: "100Mi"
+        memory: 128Mi
       limits:
-        cpu: 100m
-        memory: "100Mi"
+        cpu: 250m
+        memory: 256Mi
     volumes:
       - name: cache
         spec:
