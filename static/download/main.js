@@ -67,7 +67,9 @@
   if (
     currentPlatform &&
     !debug &&
-    (currentPlatform.includes("MAC") || currentPlatform.includes("IPHONE"))
+    (currentPlatform.includes("MAC") ||
+      currentPlatform.includes("IPHONE") ||
+      currentPlatform.includes("IPAD"))
   ) {
     window.location.replace(appStoreUrl);
     return;
