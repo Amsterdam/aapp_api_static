@@ -1,11 +1,4 @@
-trigger:
-  batch: true
-  branches:
-    include:
-      - main
-  tags:
-    include:
-      - "*.*.*"
+trigger: none
 
 resources:
   repositories:
