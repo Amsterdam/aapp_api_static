@@ -1,7 +1,0 @@
-keyVaultName: shared-t-gdqxxofz6d2sw
-
-# az ad sp list --filter "startswith(displayName,'aapp-static-t')" => appId
-workloadIdentity: e06857ea-374b-41a9-b536-f4483e7366aa
-
-host: test.app.amsterdam.nl
-nodepool: cccaapptst01
