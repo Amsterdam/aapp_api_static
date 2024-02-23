@@ -1,7 +1,0 @@
-keyVaultName: shared-a-syvd5smmij4vw
-
-# az ad sp list --filter "startswith(displayName,'aapp-static-a')" => appId
-workloadIdentity: 2968e0b1-b7b2-4c07-82ec-ff6697a3bc57
-
-host: acc.app.amsterdam.nl
-nodepool: cccaappacc01

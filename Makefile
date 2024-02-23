@@ -25,9 +25,11 @@ test:
 push:
 	$(dc) push
 
+# Moved to aapp_infra_deployments
 manifests:
 	@helm template static $(HELM_ARGS) $(ARGS)
 
+# Moved to aapp_infra_deployments 
 deploy: manifests
 	helm upgrade --install static $(HELM_ARGS) $(ARGS)
 
