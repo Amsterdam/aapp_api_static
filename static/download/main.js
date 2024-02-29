@@ -4,10 +4,14 @@
  * Use the param ?debug=1 to prevent the redirect and alert debug info.
  */
 (function () {
+  var APPLE_APP_ID = "1624518847";
+  var APPLE_PROVIDER_ID = "118991325";
+  var APPLE_MEDIA_TYPE_PARAM = "mt=8";
+  var GOOGLE_APP_ID = "nl.amsterdam.app";
   var APP_STORE_BASE_URL =
-    "https://apps.apple.com/nl/app/de-amsterdam-app/id1624518847";
+    "https://apps.apple.com/nl/app/de-amsterdam-app/id" + APPLE_APP_ID;
   var PLAY_STORE_BASE_URL =
-    "https://play.google.com/store/apps/details?id=nl.amsterdam.app";
+    "https://play.google.com/store/apps/details?id=" + GOOGLE_APP_ID;
   var DEFAULT_SOURCE = "download_page";
 
   function getPlatform() {
@@ -21,7 +25,7 @@
     }
   }
 
-  function getUtmQueryString() {
+  function getUtmQueryStringAndroid() {
     var params = new URLSearchParams(document.location.search);
 
     var source = params.get("utm_source") ?? DEFAULT_SOURCE;
@@ -34,6 +38,24 @@
     }
 
     return queryString + "&utm_campaign=" + campaign;
+  }
+
+
+  function getUtmQueryStringApple() {
+    var params = new URLSearchParams(document.location.search);
+
+    var source = params.get("utm_source") ?? DEFAULT_SOURCE;
+    var campaign = params.get("utm_campaign");
+
+    var queryStringSource = "ct=" + source;
+
+    if (!campaign) {
+      return queryStringSource;
+    }
+
+    var queryStringCampaign = "ct=" + campaign + ":" + source;
+
+    return queryStringCampaign.substring(0, 30);
   }
 
   function addUtmParamsToLink(selector, href) {
@@ -53,14 +75,15 @@
   }
 
   var currentPlatform = getPlatform();
-  var queryString = getUtmQueryString();
+  var queryStringAndroid = getUtmQueryStringAndroid();
+  var queryStringApple = getUtmQueryStringApple();
   var debug = isDebug();
-  var appStoreUrl = APP_STORE_BASE_URL + "?" + queryString;
-  var playStoreUrl = PLAY_STORE_BASE_URL + "&" + queryString;
+  var appStoreUrl = APP_STORE_BASE_URL + "?" + queryStringApple + "&pt=" + APPLE_PROVIDER_ID + "&" + APPLE_MEDIA_TYPE_PARAM;
+  var playStoreUrl = PLAY_STORE_BASE_URL + "&" + queryStringAndroid;
 
   if (debug) {
     alert(
-      [currentPlatform, queryString, appStoreUrl, playStoreUrl].join("\n\n")
+      [currentPlatform, queryStringApple, queryStringAndroid, appStoreUrl, playStoreUrl].join("\n\n")
     );
   }
 
