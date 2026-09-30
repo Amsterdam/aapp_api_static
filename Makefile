@@ -7,7 +7,9 @@ dc = docker-compose
 run = $(dc) run --rm -u ${UID}:${GID}
 
 ENVIRONMENT ?= local
-HELM_ARGS = oci://${REGISTRY}/amsterdam/helm-generic-application --version 1.12.1 \
+CHART ?= oci://crsharedaksweu9x4d.azurecr.io/platform/helm-generic-application
+CHART_VERSION ?= 0.0.0-main
+HELM_ARGS = ${CHART} --version ${CHART_VERSION} \
 	-f manifests/values.yaml \
 	-f manifests/env/${ENVIRONMENT}.yaml \
 	--set image.tag=${VERSION}
